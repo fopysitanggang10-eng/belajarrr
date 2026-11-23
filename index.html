@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informatika Kelas 7 - Berpikir Komputasional | Miss-popy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ee4d2d; /* Nuansa Oranye Cerah */
+            --primary-dark: #d73211;
+            --secondary: #1e293b;
+            --accent: #3b82f6;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --success: #16a34a;
+            --danger: #dc2626;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 5px solid var(--primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .badge-kurikulum {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+        }
+
+        header p {
+            color: #cbd5e1;
+            font-size: 1rem;
+        }
+
+        /* Container Utama */
+        .container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 0 1.2rem;
+            flex: 1;
+            width: 100%;
+        }
+
+        /* Bagian Materi */
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-left: 5px solid var(--primary);
+            padding-left: 0.8rem;
+        }
+
+        .materi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .materi-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.4rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+            border-top: 4px solid var(--accent);
+            transition: transform 0.2s ease;
+        }
+
+        .materi-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .materi-card:nth-child(2) { border-top-color: var(--primary); }
+        .materi-card:nth-child(3) { border-top-color: #10b981; }
+        .materi-card:nth-child(4) { border-top-color: #8b5cf6; }
+
+        .materi-card h3 {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 0.6rem;
+        }
+
+        .materi-card p, .materi-card ul {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .materi-card ul {
+            padding-left: 1.2rem;
+            margin-top: 0.4rem;
+        }
+
+        .materi-card li {
+            margin-bottom: 0.35rem;
+        }
+
+        /* Box Registrasi & Mulai Kuis */
+        .quiz-box {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .warning-rules {
+            background-color: #fff1f2;
+            border: 1px solid #fecdd3;
+            color: #9f1239;
+            padding: 1rem 1.2rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .warning-rules strong {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 0.9rem 1.8rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn:active {
+            transform: scale(0.99);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            margin-top: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background-color: #0f172a;
+        }
+
+        /* Sticky Timer Bar */
+        #exam-header {
+            display: none;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--secondary);
+            color: white;
+            padding: 0.9rem 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            border-bottom: 4px solid var(--primary);
+        }
+
+        .student-badge {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .timer-badge {
+            background: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+        }
+
+        .timer-danger {
+            background: var(--danger);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Soal HOTS */
+        #quiz-container {
+            display: none;
+        }
+
+        .question-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            border: 1px solid #e2e8f0;
+        }
+
+        .stimulus-box {
+            background: #f1f5f9;
+            border-left: 4px solid var(--accent);
+            padding: 0.9rem 1.1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.92rem;
+            color: #1e293b;
+        }
+
+        .stimulus-label {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .question-text {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.15s;
+            font-size: 0.95rem;
+        }
+
+        .option-item:hover {
+            background-color: #fff7ed;
+            border-color: #fdba74;
+        }
+
+        .option-item input[type="radio"] {
+            margin-top: 0.25rem;
+            accent-color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Layar Hasil / Result */
+        #result-container {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 16px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .score-circle {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 1rem auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 800;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .score-pass { background: linear-gradient(135deg, #22c55e, #15803d); }
+        .score-fail { background: linear-gradient(135deg, #f97316, #dc2626); }
+
+        .score-number {
+            font-size: 2.6rem;
+            line-height: 1;
+        }
+
+        .score-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+
+        .driver-illustration {
+            max-width: 240px;
+            margin: 1rem auto;
+            animation: bounceIn 0.8s ease;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        .result-banner {
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .banner-mantap {
+            background-color: #dcfce7;
+            color: #166534;
+            border: 2px solid #86efac;
+        }
+
+        .banner-semangat {
+            background-color: #ffedd5;
+            color: #9a3412;
+            border: 2px solid #fdba74;
+        }
+
+        /* Layar Pelanggaran Pindah Tab (Merah & Gagal) */
+        #cheat-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background-color: #b91c1c;
+            color: white;
+            z-index: 9999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            animation: flashRed 0.6s infinite alternate;
+        }
+
+        @keyframes flashRed {
+            from { background-color: #991b1b; }
+            to { background-color: #dc2626; }
+        }
+
+        .cheat-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        #cheat-overlay h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        #cheat-overlay p {
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin-bottom: 1.5rem;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+        }
+
+        /* Confetti Canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 500;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: #f8fafc;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            margin-top: 3rem;
+            border-top: 4px solid var(--primary);
+        }
+
+        footer p {
+            font-size: 0.95rem;
+        }
+
+        .author-tag {
+            display: inline-block;
+            margin-top: 0.4rem;
+            font-weight: 700;
+            color: #fb923c;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- LAYAR PELANGGARAN PINDAH TAB -->
+    <div id="cheat-overlay">
+        <div class="cheat-icon">🚨</div>
+        <h2>SISTEM TERKUNCI — ANDA GAGAL!</h2>
+        <p id="cheat-reason">Terdeteksi berpindah tab / membuka jendela lain saat ujian berlangsung! Nilai otomatis 0 (GAGAL).</p>
+        <div id="cheat-student-info" style="font-weight: 700; margin-bottom: 1.5rem; font-size: 1.1rem;"></div>
+        <button onclick="resetUjian()" class="btn" style="max-width: 280px; background: white; color: #b91c1c;">Ulangi dari Awal</button>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="badge-kurikulum">INFORMATIKA SMP KELAS 7 • KURIKULUM MERDEKA</div>
+        <h1>Berpikir Komputasional</h1>
+        <p>Ringkasan Materi & Evaluasi HOTS Interaktif</p>
+    </header>
+
+    <div class="container">
+        <!-- BAGIAN MATERI -->
+        <div id="materi-section">
+            <h2 class="section-title">📚 Ringkasan Materi Pembelajaran</h2>
+            <div class="materi-grid">
+                <div class="materi-card">
+                    <h3>1. Konsep Dasar</h3>
+                    <p><strong>Berpikir Komputasional (Computational Thinking)</strong> adalah cara berpikir untuk memecahkan masalah secara sistematis, logis, efektif, dan efisien layaknya seorang ilmuwan komputer—bukan berarti kita harus berpikir seperti mesin komputer, melainkan menyusun solusi agar mudah dijalankan manusia maupun komputer.</p>
+                </div>
+
+                <div class="materi-card">
+                    <h3>2. Empat Pilar Utama</h3>
+                    <ul>
+                        <li><strong>Dekomposisi:</strong> Memecah masalah besar/kompleks menjadi bagian-bagian kecil yang mudah dikelola.</li>
+                        <li><strong>Pengenalan Pola:</strong> Mencari kesamaan, tren, atau keteraturan antar bagian masalah.</li>
+                        <li><strong>Abstraksi:</strong> Menyaring informasi penting dan mengabaikan detail yang tidak relevan.</li>
+                        <li><strong>Algoritma:</strong> Menyusun urutan langkah-langkah logis dari awal hingga akhir untuk menyelesaikan masalah.</li>
+                    </ul>
+                </div>
+
+                <div class="materi-card">
+                    <h3>3. Penerapan Algoritma & Logika</h3>
+                    <p>Digunakan dalam kehidupan sehari-hari maupun logika dasar seperti:</p>
+                    <ul>
+                        <li><strong>Optimasi Penjadwalan:</strong> Mengatur urutan kegiatan agar waktu dan tenaga paling hemat.</li>
+                        <li><strong>Kodifikasi & Representasi Data:</strong> Mengubah informasi menjadi simbol, kode biner, atau tabel agar cepat diproses.</li>
+                    </ul>
+                </div>
+
+                <div class="materi-card">
+                    <h3>4. Refleksi & Evaluasi Solusi</h3>
+                    <p>Setelah menemukan solusi, kita perlu <strong>membandingkan dan mengevaluasi</strong> berbagai alternatif langkah penyelesaian untuk memilih cara yang paling optimal (paling cepat, paling sedikit langkahnya, dan minim kesalahan).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FORM IDENTITAS SISWA -->
+        <div id="registration-box" class="quiz-box">
+            <h2 class="section-title">📝 Evaluasi HOTS (10 Soal Pilihan Ganda)</h2>
+            <div class="warning-rules">
+                <strong>⚠️ PERATURAN PENTING SEBELUM MULAI:</strong>
+                1. Waktu pengerjaan adalah <strong>7 Menit</strong> hitung mundur otomatis.<br>
+                2. Begitu menekan tombol <strong>Mulai Mengerjakan</strong>, sistem pengawas aktif.<br>
+                3. <strong>DILARANG berpindah tab, membuka browser lain, atau meminimalkan layar!</strong> Jika melanggar, layar akan otomatis berwarna <strong>MERAH, berbunyi alarm, dan dinyatakan GAGAL</strong>.
+            </div>
+
+            <div class="form-group">
+                <label for="nama-siswa">Nama Lengkap Siswa</label>
+                <input type="text" id="nama-siswa" class="form-control" placeholder="Contoh: Budi Santoso" required>
+            </div>
+
+            <div class="form-group">
+                <label for="kelas-siswa">Kelas</label>
+                <select id="kelas-siswa" class="form-control">
+                    <option value="">-- Pilih Kelas --</option>
+                    <option value="VII-A">VII-A</option>
+                    <option value="VII-B">VII-B</option>
+                    <option value="VII-C">VII-C</option>
+                    <option value="VII-D">VII-D</option>
+                    <option value="VII-E">VII-E</option>
+                    <option value="VII-Jujur">VII-Jujur</option>
+                </select>
+            </div>
+
+            <button onclick="mulaiKuis()" class="btn">🚀 Mulai Mengerjakan Soal (Timer 7 Menit)</button>
+        </div>
+
+        <!-- HEADER UJIAN AKTIF (STICKY) -->
+        <div id="exam-header">
+            <div class="student-badge">
+                👤 <span id="display-nama"></span> (<span id="display-kelas"></span>)
+            </div>
+            <div id="timer-box" class="timer-badge">
+                ⏱️ <span id="timer-display">07:00</span>
+            </div>
+        </div>
+
+        <!-- AREA 10 SOAL HOTS -->
+        <div id="quiz-container">
+            <form id="quiz-form">
+                <div id="questions-wrapper"></div>
+                <button type="button" onclick="selesaiKuis(false)" class="btn" style="background-color: #16a34a; font-size: 1.1rem;">✅ Kumpulkan Jawaban Sekarang</button>
+            </form>
+        </div>
+
+        <!-- AREA HASIL NILAI -->
+        <div id="result-container">
+            <h2 id="result-student-title" style="color: var(--secondary); font-size: 1.3rem;"></h2>
+            <div id="score-circle" class="score-circle">
+                <span id="score-number" class="score-number">0</span>
+                <span class="score-label">NILAI AKHIR</span>
+            </div>
+
+            <!-- Ilustrasi SVG Driver ShopeeFood -->
+            <div id="driver-graphic" class="driver-illustration"></div>
+
+            <div id="result-banner" class="result-banner"></div>
+            <p id="result-feedback" style="color: #475569; max-width: 600px; margin: 0 auto 1.5rem auto;"></p>
+
+            <button onclick="resetUjian()" class="btn btn-secondary" style="max-width: 260px;">🔄 Coba Kerjakan Lagi</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Materi Informatika Kelas 7 SMP — Kurikulum Merdeka</p>
+        <span class="author-tag">by : Miss-popy</span>
+    </footer>
+
+    <script>
+        // BANK 10 SOAL HOTS BERSTIMULUS
+        const soalHOTS = [
+            {
+                stimulus: "Rina ditunjuk menjadi ketua panitia Pentas Seni SMP. Karena acaranya sangat besar dan melibatkan banyak kegiatan, Rina membagi tugas kepada beberapa tim: Tim Dekorasi panggung, Tim Konsumsi, Tim Dokumentasi, dan Tim Pengisi Acara agar setiap tim fokus pada tugas kecilnya masing-masing.",
+                pertanyaan: "1. Strategi berpikir komputasional yang diterapkan Rina untuk menyederhanakan persiapan acara besar tersebut adalah...",
+                pilihan: [
+                    "A. Abstraksi, karena Rina mengabaikan rincian acara yang tidak penting",
+                    "B. Dekomposisi, karena Rina memecah masalah besar menjadi sub-masalah yang lebih kecil",
+                    "C. Pengenalan pola, karena acara pentas seni selalu sama setiap tahunnya",
+                    "D. Evaluasi solusi, karena Rina membandingkan biaya antar tim panitia"
+                ],
+                jawaban: 1
+            },
+            {
+                stimulus: "Sebuah toko roti mencatat penjualan selama 4 minggu. Setiap hari Senin–Kamis, roti cokelat selalu terjual rata-rata 30 buah. Namun, setiap hari Jumat dan Sabtu, penjualan roti cokelat melonjak drastis menjadi 90 buah per hari. Pemilik toko memutuskan membuat adonan 3 kali lipat khusus setiap Jumat dan Sabtu.",
+                pertanyaan: "2. Keputusan pemilik toko roti tersebut merupakan penerapan pilar berpikir komputasional berupa...",
+                pilihan: [
+                    "A. Pengenalan pola, karena pemilik toko menemukan keteraturan lonjakan pembeli di hari tertentu",
+                    "B. Dekomposisi, karena pemilik toko membagi adonan roti menjadi bagian-bagian kecil",
+                    "C. Algoritma, karena pemilik toko menuliskan resep pembuatan roti cokelat secara berurutan",
+                    "D. Abstraksi, karena pemilik toko melupakan penjualan jenis roti selain roti cokelat"
+                ],
+                jawaban: 0
+            },
+            {
+                stimulus: "Dika ingin pergi ke rumah neneknya menggunakan transportasi umum. Di aplikasi peta digital, muncul berbagai informasi mulai dari warna gedung, nama-nama warung di pinggir jalan, jenis pohon, hingga jalur rute bus dan halte pemberhentian. Dika hanya fokus memperhatikan jalur rute bus dan nama halte tujuan.",
+                pertanyaan: "3. Tindakan Dika menyaring informasi yang dibutuhkan dan mengabaikan detail yang tidak relevan disebut...",
+                pilihan: [
+                    "A. Algoritma",
+                    "B. Dekomposisi",
+                    "C. Abstraksi",
+                    "D. Kodifikasi"
+                ],
+                jawaban: 2
+            },
+            {
+                stimulus: "Ibu memiliki 1 mesin cuci (kapasitas 1 kali cuci butuh waktu 30 menit), 1 jemuran (menjemur butuh 10 menit), dan 1 setrika (menyetrika butuh 20 menit). Ibu ingin mencuci 2 keranjang pakaian (Keranjang A dan Keranjang B) secara berurutan.",
+                pertanyaan: "4. Manakah urutan langkah paling efisien (optimal) agar seluruh pekerjaan selesai dalam waktu tersingkat?",
+                pilihan: [
+                    "A. Cuci A → Jemur A → Setrika A → lalu baru mulai Cuci B → Jemur B → Setrika B",
+                    "B. Cuci A → saat Jemur A, langsung mulai Cuci B → setelah A kering lalu Setrika A sambil Jemur B",
+                    "C. Cuci A dan B secara bersamaan dalam satu mesin cuci meskipun melebihi kapasitas",
+                    "D. Menjemur kedua keranjang terlebih dahulu sebelum dimasukkan ke dalam mesin cuci"
+                ],
+                jawaban: 1
+            },
+            {
+                stimulus: "Perhatikan deret sandi rahasia berikut untuk membuka loker laboratorium komputer:\n• KATA 'BOLA' dikodekan menjadi '2 - 15 - 12 - 1'\n• KATA 'DATA' dikodekan menjadi '4 - 1 - 20 - 1'",
+                pertanyaan: "5. Berdasarkan pola representasi data tersebut, jika kata kunci loker adalah 'KODE', maka urutan angka yang harus dimasukkan adalah...",
+                pilihan: [
+                    "A. 11 - 15 - 4 - 5",
+                    "B. 10 - 15 - 4 - 5",
+                    "C. 11 - 14 - 4 - 5",
+                    "D. 12 - 15 - 3 - 5"
+                ],
+                jawaban: 0
+            },
+            {
+                stimulus: "Sebuah robot pembersih lantai diprogram dengan instruksi:\n1) Maju 2 langkah\n2) Belok kanan 90 derajat\n3) Maju 2 langkah\n4) Ulangi langkah 1 sampai 3 sebanyak 2 kali.",
+                pertanyaan: "6. Jika robot mulai menghadap ke UTARA dari titik awal, di manakah posisi akhir robot setelah menjalankan seluruh algoritma tersebut?",
+                pilihan: [
+                    "A. Berada 4 langkah di sebelah timur titik awal",
+                    "B. Kembali tepat di titik awal keberangkatan",
+                    "C. Berada 2 langkah di sebelah selatan titik awal",
+                    "D. Berada 4 langkah di sebelah utara titik awal"
+                ],
+                jawaban: 1
+            },
+            {
+                stimulus: "Andi membuat mi instan dengan langkah berikut:\n1) Masukkan mi ke panci\n2) Tuang bumbu ke mangkuk\n3) Nyalakan kompor\n4) Tuang air ke panci\n5) Tiriskan mi dan aduk di mangkuk.",
+                pertanyaan: "7. Evaluasi yang tepat terhadap algoritma memasak mi yang disusun Andi adalah...",
+                pilihan: [
+                    "A. Algoritma sudah sangat optimal karena semua bahan langsung masuk bersamaan",
+                    "B. Urutan langkah keliru secara logika karena air harus dituang dan dipanaskan dulu sebelum mi dimasukkan",
+                    "C. Langkah ke-2 tidak diperlukan dalam pembuatan mi instan goreng",
+                    "D. Kompor seharusnya dinyalakan paling akhir setelah mi ditiriskan"
+                ],
+                jawaban: 1
+            },
+            {
+                stimulus: "Dalam permainan lampu lalu lintas pintar, lampu akan menyala dengan pola berulang setiap 4 detik: [MERAH - KUNING - HIJAU - KUNING]. Pada detik ke-1 lampu menyala MERAH, detik ke-2 KUNING, detik ke-3 HIJAU, detik ke-4 KUNING, dan seterusnya.",
+                pertanyaan: "8. Dengan memanfaatkan pengenalan pola sisa pembagian, warna lampu yang akan menyala tepat pada detik ke-27 adalah...",
+                pilihan: [
+                    "A. MERAH",
+                    "B. KUNING",
+                    "C. HIJAU",
+                    "D. Semua lampu mati"
+                ],
+                jawaban: 2
+            },
+            {
+                stimulus: "Untuk mengirim data gambar hitam-putih ke komputer, setiap kotak putih diberi kode '0' dan kotak hitam diberi kode '1'. Satu baris gambar terdiri dari 5 kotak dengan urutan: [Hitam - Putih - Hitam - Hitam - Putih].",
+                pertanyaan: "9. Representasi data biner yang tepat untuk baris gambar tersebut adalah...",
+                pilihan: [
+                    "A. 01001",
+                    "B. 10110",
+                    "C. 11001",
+                    "D. 00110"
+                ],
+                jawaban: 1
+            },
+            {
+                stimulus: "Siska membandingkan 3 cara mencari buku 'Ensiklopedia Sains' di perpustakaan sekolah:\n• Cara 1: Memeriksa satu per satu buku dari rak paling depan sampai ketemu.\n• Cara 2: Langsung menuju rak kategori 'Sains', lalu mencari berdasarkan huruf awal judul 'E'.\n• Cara 3: Bertanya kepada setiap siswa yang sedang membaca di perpustakaan.",
+                pertanyaan: "10. Setelah mengevaluasi ketiga alternatif tersebut, mengapa Cara 2 dinilai paling optimal secara komputasional?",
+                pilihan: [
+                    "A. Karena memanfaatkan pengelompokan kategori dan urutan abjad sehingga memangkas waktu pencarian secara drastis",
+                    "B. Karena Cara 2 memeriksa seluruh buku yang ada di perpustakaan tanpa terkecuali",
+                    "C. Karena Cara 1 dan Cara 3 tidak bisa menemukan buku yang dicari",
+                    "D. Karena tidak memerlukan pengetahuan tentang huruf abjad"
+                ],
+                jawaban: 0
+            }
+        ];
+
+        // VARIABEL SISTEM
+        let isExamActive = false;
+        let timerInterval = null;
+        let timeLeft = 7 * 60; // 7 menit = 420 detik
+        let alarmInterval = null;
+        let audioCtx = null;
+
+        // Render Soal ke HTML
+        function renderSoal() {
+            const wrapper = document.getElementById('questions-wrapper');
+            wrapper.innerHTML = '';
+
+            soalHOTS.forEach((item, index) => {
+                let optionsHTML = '';
+                item.pilihan.forEach((opt, optIdx) => {
+                    optionsHTML += `
+                        <label class="option-item">
+                            <input type="radio" name="q${index}" value="${optIdx}">
+                            <span>${opt}</span>
+                        </label>
+                    `;
+                });
+
+                wrapper.innerHTML += `
+                    <div class="question-card">
+                        <div class="stimulus-box">
+                            <span class="stimulus-label">📌 Stimulus Soal ${index + 1}</span>
+                            ${item.stimulus.replace(/\n/g, '<br>')}
+                        </div>
+                        <div class="question-text">${item.pertanyaan}</div>
+                        <div class="options-list">
+                            ${optionsHTML}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // MULAI KUIS
+        function mulaiKuis() {
+            const nama = document.getElementById('nama-siswa').value.trim();
+            const kelas = document.getElementById('kelas-siswa').value;
+
+            if (!nama || !kelas) {
+                alert("Harap isi Nama Lengkap dan pilih Kelas terlebih dahulu!");
+                return;
+            }
+
+            // Inisialisasi AudioContext saat interaksi klik pertama (agar izin suara browser aktif)
+            try {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            } catch (e) {
+                console.log("Audio API tidak didukung");
+            }
+
+            document.getElementById('display-nama').textContent = nama;
+            document.getElementById('display-kelas').textContent = kelas;
+
+            // Sembunyikan form & materi agar fokus ke soal
+            document.getElementById('registration-box').style.display = 'none';
+            document.getElementById('materi-section').style.display = 'none';
+            document.getElementById('result-container').style.display = 'none';
+
+            // Tampilkan header ujian & soal
+            document.getElementById('exam-header').style.display = 'flex';
+            document.getElementById('quiz-container').style.display = 'block';
+
+            renderSoal();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Aktifkan Sistem Pengawas & Timer 7 Menit
+            isExamActive = true;
+            timeLeft = 7 * 60;
+            updateTimerDisplay();
+
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+
+                if (timeLeft <= 60) {
+                    document.getElementById('timer-box').classList.add('timer-danger');
+                }
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    alert("Waktu 7 menit telah habis! Jawaban otomatis dikumpulkan.");
+                    selesaiKuis(true);
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer-display').textContent = 
+                `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+
+        // DETEKSI BERALIH TAB / KEHILANGAN FOKUS JENDELA
+        document.addEventListener("visibilitychange", function() {
+            if (isExamActive && document.hidden) {
+                triggerCheatViolation("Anda terdeteksi membuka tab baru atau meninggalkan halaman ujian!");
+            }
+        });
+
+        window.addEventListener("blur", function() {
+            if (isExamActive) {
+                triggerCheatViolation("Anda terdeteksi beralih ke aplikasi/jendela lain saat ujian sedang aktif!");
+            }
+        });
+
+        function triggerCheatViolation(reason) {
+            if (!isExamActive) return;
+            isExamActive = false;
+            clearInterval(timerInterval);
+
+            const nama = document.getElementById('nama-siswa').value.trim();
+            const kelas = document.getElementById('kelas-siswa').value;
+
+            document.getElementById('cheat-reason').textContent = reason + " Status: GAGAL (Nilai 0).";
+            document.getElementById('cheat-student-info').textContent = `Siswa: ${nama} | Kelas: ${kelas}`;
+            document.getElementById('cheat-overlay').style.display = 'flex';
+
+            // Bunyikan Alarm Keras dari Perangkat
+            playAlarmSound();
+        }
+
+        function playAlarmSound() {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+
+                const beep = () => {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(880, audioCtx.currentTime); // Nada tinggi peringatan
+                    osc.frequency.exponentialRampToValueAtTime(440, audioCtx.currentTime + 0.35);
+
+                    gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
+
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.36);
+                };
+
+                beep();
+                alarmInterval = setInterval(beep, 550);
+            } catch (err) {
+                console.error("Gagal memutar audio peringatan:", err);
+            }
+        }
+
+        function stopAlarmSound() {
+            if (alarmInterval) {
+                clearInterval(alarmInterval);
+                alarmInterval = null;
+            }
+        }
+
+        // HITUNG NILAI & TAMPILKAN HASIL
+        function selesaiKuis(isTimeout) {
+            if (!isExamActive && !isTimeout) return;
+            isExamActive = false;
+            clearInterval(timerInterval);
+
+            let benar = 0;
+            soalHOTS.forEach((item, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selected && parseInt(selected.value) === item.jawaban) {
+                    benar++;
+                }
+            });
+
+            const skor = benar * 10;
+            const nama = document.getElementById('nama-siswa').value.trim();
+            const kelas = document.getElementById('kelas-siswa').value;
+
+            document.getElementById('exam-header').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('result-container').style.display = 'block';
+
+            document.getElementById('result-student-title').textContent = `Hasil Evaluasi: ${nama} (${kelas})`;
+            document.getElementById('score-number').textContent = skor;
+
+            const scoreCircle = document.getElementById('score-circle');
+            const banner = document.getElementById('result-banner');
+            const feedback = document.getElementById('result-feedback');
+            const driverBox = document.getElementById('driver-graphic');
+
+            if (skor > 80) {
+                // DI ATAS 80: SELAMAT & MANTAP + DRIVER SHOPEEFOOD SELAMAT
+                scoreCircle.className = 'score-circle score-pass';
+                banner.className = 'result-banner banner-mantap';
+                banner.innerHTML = '🎉 SELAMAT & MANTAP! NILAI KAMU LUAR BIASA! 🎉';
+                feedback.textContent = `Hebat, ${nama}! Kamu menjawab benar ${benar} dari 10 soal HOTS Berpikir Komputasional. Driver ShopeeFood saja ikut bangga mengantar paket ucapan selamat buat kamu!`;
+                driverBox.innerHTML = getDriverShopeeFoodSVG('selamat');
+                startConfetti();
+            } else {
+                // DI BAWAH ATAU SAMA DENGAN 80: YUKK SEMANGAT & COBA LAGI + DRIVER SHOPEEFOOD SEMANGAT
+                scoreCircle.className = 'score-circle score-fail';
+                banner.className = 'result-banner banner-semangat';
+                banner.innerHTML = '💪 YUKK SEMANGAT DAN COBA LAGI! 💪';
+                feedback.textContent = `Tetap semangat, ${nama}! Kamu menjawab benar ${benar} dari 10 soal (Nilai harus di atas 80 untuk lulus tuntas). Driver ShopeeFood siap kasih dukungan penuh biar kamu makin jago!`;
+                driverBox.innerHTML = getDriverShopeeFoodSVG('semangat');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ILUSTRASI VEKTOR CUSTOM DRIVER SHOPEEFOOD (ANTI-BROKEN LINK DI GITHUB)
+        function getDriverShopeeFoodSVG(mode) {
+            const isSelamat = mode === 'selamat';
+            const badgeText = isSelamat ? "MANTAP! SELAMAT!" : "YUKK SEMANGAT!";
+            const badgeColor = isSelamat ? "#16a34a" : "#ee4d2d";
+            const mouthPath = isSelamat 
+                ? "M 88 106 Q 100 120 112 106 Z" // Senyum lebar bahagia
+                : "M 88 108 Q 100 116 112 108";  // Senyum ramah menyemangati
+
+            return `
+            <svg viewBox="0 0 220 230" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
+                <!-- Latar Lingkaran -->
+                <circle cx="110" cy="125" r="85" fill="#fff7ed" stroke="#fdba74" stroke-width="3"/>
+                
+                <!-- Jaket Oranye ShopeeFood -->
+                <path d="M 55 205 C 55 155, 165 155, 165 205 Z" fill="#ee4d2d"/>
+                <path d="M 92 162 L 100 185 L 108 162 Z" fill="#ffffff"/>
+                <rect x="108" y="175" width="38" height="14" rx="4" fill="#ffffff"/>
+                <text x="127" y="185" font-size="7.5" font-weight="800" fill="#ee4d2d" text-anchor="middle">ShopeeFood</text>
+
+                <!-- Leher & Wajah -->
+                <rect x="92" y="132" width="16" height="22" rx="6" fill="#fed7aa"/>
+                <circle cx="100" cy="100" r="30" fill="#fed7aa"/>
+
+                <!-- Helm Oranye & Putih Khas ShopeeFood -->
+                <path d="M 68 95 C 68 58, 132 58, 132 95 Z" fill="#ee4d2d"/>
+                <path d="M 72 86 Q 100 78 128 86 L 128 93 Q 100 86 72 93 Z" fill="#ffffff"/>
+                <!-- Kaca Visor Helm -->
+                <path d="M 72 90 Q 100 98 128 90 L 125 100 Q 100 106 75 100 Z" fill="#38bdf8" opacity="0.45"/>
+                <!-- Logo S di Helm -->
+                <circle cx="100" cy="72" r="9" fill="#ffffff"/>
+                <text x="100" y="76" font-size="11" font-weight="900" fill="#ee4d2d" text-anchor="middle">S</text>
+
+                <!-- Mata & Ekspresi -->
+                <circle cx="90" cy="102" r="3" fill="#1e293b"/>
+                <circle cx="110" cy="102" r="3" fill="#1e293b"/>
+                <path d="${mouthPath}" fill="${isSelamat ? '#ffffff' : 'none'}" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
+
+                <!-- Tangan Memberi Jempol / Kepalan Semangat -->
+                <circle cx="158" cy="148" r="14" fill="#fed7aa" stroke="#ea580c" stroke-width="2"/>
+                <rect x="153" y="128" width="9" height="16" rx="4.5" fill="#fed7aa" stroke="#ea580c" stroke-width="2"/>
+
+                <!-- Papan Ucapan Driver -->
+                <rect x="20" y="12" width="180" height="34" rx="17" fill="${badgeColor}" />
+                <polygon points="105,46 115,46 110,56" fill="${badgeColor}"/>
+                <text x="110" y="34" font-size="13" font-weight="800" fill="#ffffff" text-anchor="middle">${badgeText}</text>
+            </svg>`;
+        }
+
+        // RESET UJIAN
+        function resetUjian() {
+            stopAlarmSound();
+            stopConfetti();
+            isExamActive = false;
+            clearInterval(timerInterval);
+
+            document.getElementById('cheat-overlay').style.display = 'none';
+            document.getElementById('result-container').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('exam-header').style.display = 'none';
+            document.getElementById('timer-box').classList.remove('timer-danger');
+
+            document.getElementById('materi-section').style.display = 'block';
+            document.getElementById('registration-box').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // EFEK CONFETTI SAAT NILAI > 80
+        let confettiAnim = null;
+        function startConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const pieces = [];
+            const colors = ['#ee4d2d', '#22c55e', '#3b82f6', '#eab308', '#a855f7'];
+            for (let i = 0; i < 120; i++) {
+                pieces.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    w: Math.random() * 10 + 5,
+                    h: Math.random() * 6 + 4,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    speed: Math.random() * 3 + 2,
+                    angle: Math.random() * 360
+                });
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                pieces.forEach(p => {
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.angle * Math.PI / 180);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                    ctx.restore();
+
+                    p.y += p.speed;
+                    p.angle += 3;
+                    if (p.y > canvas.height) p.y = -10;
+                });
+                confettiAnim = requestAnimationFrame(draw);
+            }
+            draw();
+        }
+
+        function stopConfetti() {
+            if (confettiAnim) {
+                cancelAnimationFrame(confettiAnim);
+                confettiAnim = null;
+            }
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    </script>
+</body>
+</html>
