@@ -1,0 +1,2 @@
+# belajarrr
+yuk belajar informatika
